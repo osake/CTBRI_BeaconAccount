@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- 数据库驱动包位置 -->
+	 <classPathEntry location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar" /> 
+	<!--<classPathEntry location="C:\oracle\product\10.2.0\db_1\jdbc\lib\ojdbc14.jar" />-->
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- 数据库链接URL、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/coreBase" userId="root" password="yang1290">
+		<!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@localhost:1521:orcl" userId="msa" password="msa">-->
+			<property name="useUnicode" value="true"/>
+    		<property name="characterEncoding" value="UTF-8"/>
+    		<property name="zeroDateTimeBehavior" value="convertToNull"/>
+		</jdbcConnection>
+		<javaTypeResolver > 
+           <!-- 
+                   默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer 
+                   true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal 
+           -->  
+           <property name="forceBigDecimals" value="false" /> 
+     </javaTypeResolver>
+		<!-- 生成模型的包名和位置 -->
+		<javaModelGenerator targetPackage="com.bupt.core.system.model" targetProject="CTBRI_BeaconAccount/src/main/java/">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- 生成的映射文件包名和位置 -->
+		<sqlMapGenerator targetPackage="com.bupt.core.system.dao" targetProject="CTBRI_BeaconAccount/src/main/java/">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.bupt.core.system.dao" targetProject="CTBRI_BeaconAccount/src/main/java/">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
+		<table tableName="t_business_record" domainObjectName="BusinessRecord">
+		     <generatedKey column="record_id" sqlStatement="MySql" identity="true"/>
+		</table>
+<!-- 		<table tableName="t_security_query" domainObjectName="Query">
+		     <generatedKey column="query_id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<table tableName="t_security_usercategory" domainObjectName="UserCategory">
+		     <generatedKey column="usercategory_id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<table tableName="t_security_constraint_entitlement" domainObjectName="ConstraintUserCategory"/>
+		<table tableName="t_security_privilege_conflict" domainObjectName="PrivilegeConflict"/>
+		<table tableName="t_security_query_entitlement" domainObjectName="QueryUserCategory"/>
+		<table tableName="t_security_role_conflict" domainObjectName="RoleConflict"/>
+		<table tableName="t_security_user_category" domainObjectName="UserCategoryRelation"/> -->
+	</context>
+</generatorConfiguration>
