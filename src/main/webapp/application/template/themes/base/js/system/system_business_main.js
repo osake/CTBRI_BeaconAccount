@@ -114,6 +114,18 @@ function saveTheEdit(dom,cusNameOld,conSumOld){
 	var cusNameNew =cusNameDom.find('input').val();
 	var conSumNew = conSumDom.find('input').val();
 	
+	cusNameOld=cusNameOld.trim(), conSumOld=conSumOld.trim()
+	cusNameNew=cusNameNew.trim(),conSumNew=conSumNew.trim()
+	
+	if(cusNameNew.length==0 || cusNameNew.length >20){
+		alertJQ("数据格式填写不正确", 1000);
+		return;
+	}
+	if(conSumNew.length==0 || conSumNew.length >20){
+		alertJQ("数据格式填写不正确", 1000);
+		return;
+	}
+	
 	if(!(cusNameOld ===cusNameNew &&conSumOld===conSumNew)) {
 		$('#activity_pane').showLoading();
 		$.post(global_context+"/system/business/batchUpdateBusiness.do", 
@@ -200,8 +212,12 @@ function addBusinessInCB(data) {
 	//增加表单验证
 	$("#businessAddForm").validate({
 		rules : {
-			name:{required:true,maxlength:30,byteRangeLength:[0,30]},
-			description:{required:true,maxlength:200,byteRangeLength:[0,200]}
+			customerName:{required:true,maxlength:20,byteRangeLength:[0,20]},
+			contractSum:{required:true,maxlength:20,byteRangeLength:[0,20]},
+			dataVersion:{required:true,maxlength:20,byteRangeLength:[0,20]},
+			contractLast:{required:true,maxlength:20,byteRangeLength:[0,20]},
+			dataShare:{required:true,maxlength:20,byteRangeLength:[0,20]},
+			organ:{required:true}
 		},
 		onkeyup : false,
 		onclick : false,
@@ -280,9 +296,12 @@ function modifyBusinessIn(businessId) {
 		//修改表单验证
 		$("#businessModifyForm").validate({
 			rules : { 
-				name:{required:true,maxlength:30,byteRangeLength:[0,30]},
-				description:{required:true,maxlength:200,byteRangeLength:[0,200]},
-				parentId:{required:false},
+				customerName:{required:true,maxlength:20,byteRangeLength:[0,20]},
+				contractSum:{required:true,maxlength:20,byteRangeLength:[0,20]},
+				dataVersion:{required:true,maxlength:20,byteRangeLength:[0,20]},
+				contractLast:{required:true,maxlength:20,byteRangeLength:[0,20]},
+				dataShare:{required:true,maxlength:20,byteRangeLength:[0,20]},
+				organ:{required:true}
 			},
 			onkeyup : false,
 			onclick : false,
