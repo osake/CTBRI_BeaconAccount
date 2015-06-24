@@ -37,8 +37,8 @@ $(function(){
 	   		             '<div style=""><h3>客户名称：<span class="cusName">{0}</span></h3></div>',
 	   		             '<div style="">' +
 	   		             	 "<h3>合同总金额：<span class='contraSum'>{0}</span>万元   " +
-		   		             "<img style='cursor:pointer;' src='"+global_context+"/application/template/themes/base/images/content-add.png' onclick='addNewRecordToCurrent(this,{0})' title='添加'/>   " +
-		   		             "<span style='cursor:pointer;' onclick='modifyByBatch(this)'>修改</span>" +
+		   		             '<img style="cursor:pointer;" src="'+global_context+'/application/template/themes/base/images/content-add.png" onclick="addNewRecordToCurrent(this,'+"'{0}'"+')" title="添加"/>' +
+		   		             "<span style='cursor:pointer;margin-left:10px;' onclick='modifyByBatch(this)'>修改</span>" +
 		   		             "</h3>" +
 	   		             "</div>"
 	   		],
